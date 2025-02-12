@@ -19,7 +19,7 @@
               <span class="d-block text-muted">Enter your credentials below</span>
             </div>
             <div class="form-group form-group-feedback form-group-feedback-left">
-              <input type="text" class="form-control" placeholder="Username" name="loginUser" id="loginUser" autocomplete="none" value="magnetar" required>
+              <input type="text" class="form-control" placeholder="Username" name="loginUser" id="loginUser" autocomplete="none" value="rigel" required>
               <div class="form-control-feedback">
                 <i class="icon-user text-muted"></i>
               </div>
