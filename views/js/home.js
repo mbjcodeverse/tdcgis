@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
    const EAST_BOUND = 122.97356933277679;
    const WEST_BOUND = 122.9671846920831;
 
-   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
+   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete___.svg";
 
    async function initMap() {
        const { Map, InfoWindow } = await google.maps.importLibrary("maps");
