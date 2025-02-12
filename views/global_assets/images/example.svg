@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <polygon id="myPolygon" points="100,10 40,180 190,60 10,60 160,180" fill="blue" />
+</svg>

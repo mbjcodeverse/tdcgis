@@ -1,0 +1,22 @@
+Project Name: TDC GIS
+Project ID: tdc-gis-402314
+Billing Account Name: Teresa Development Corporation
+
+API Key: AIzaSyCdiY40X_OEQS7BfG0TApCQW4PUURkur2M
+Billing Account ID: 018ABA-DAFB43-721F95
+
+Installing npm
+--------------
+  nodejs.org
+  download Current
+  install 
+  open command prompt - type node -v - enter
+                             npm -v
+
+  https://www.typescriptlang.org/download
+  command prompt -> npm install -g typescript
+  command prompt -> tsc -v
+
+  run VS Code
+  Extensions (Ctrl+Shift+X)
+  Search Box -> type eslint, then Install

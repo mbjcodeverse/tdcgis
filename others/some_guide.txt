@@ -1,0 +1,10 @@
+Prettify SVG (In case SVG code not properly formatted for readability)
+----------------------------------------------------------------------
+1. open SVG file in editor
+2. rename extension to .html
+3. right-click, then Format document
+4. restore extension to .SVG
+
+SVG fill color to be effective, remove class="??" from polygon or rect
+or
+If you want to retain class="??" use style="fill:lime;"

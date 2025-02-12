@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- https://github.com/cotton123236/zoomist -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.css" />
+<script src="https://cdn.jsdelivr.net/npm/zoomist@2/zoomist.umd.js"></script>
+<!-- <link rel="stylesheet" src="zoomist.css"/>
+
+<script src="zoomist.js"></script> -->
+
+<style>
+  .zoomist-container {
+  width: 100%;
+  max-width: 80%;
+}
+
+.zoomist-image {
+  width: 100%;
+  /* aspect-ratio: 1; */
+}
+
+.zoomist-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+</style>
+</head>
+<body>
+
+<h1>Image Zoom</h1>
+
+
+<div class="zoomist-container">
+    <!-- zoomist-wrapper is required -->
+    <div class="zoomist-wrapper">
+      <!-- zoomist-image is required -->
+      <div class="zoomist-image">
+        <!-- you can add anything you want to zoom here. -->
+        <img src="xmas.jpg" />
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+    const zoomist = new Zoomist('.zoomist-container', {
+    // Optional parameters
+    maxScale: 4,
+    bounds: true,
+    // if you need slider
+    slider: true,
+    // if you need zoomer
+    zoomer: true
+  })
+</script>
+
+</body>
+</html>
