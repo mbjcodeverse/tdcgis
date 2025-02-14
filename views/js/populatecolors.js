@@ -388,6 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         switch (lotstatus) {
                            case 'Sold':
                               polygon.setAttribute("fill", 'palegreen');
+                              // polygon.setAttribute("opacity", "0.9");
                               break;
                            case 'Cancelled':
                               polygon.setAttribute("fill", 'deeppink');
