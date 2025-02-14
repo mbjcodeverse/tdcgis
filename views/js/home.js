@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  map.setZoom(20);
                  break;   
               default:
-                 window.location = 'populatecolors';
+                 window.location = 'home';
                  // $("#btn-reset").click();
                  // map.setCenter(ROSELAWN);
                  // map.setZoom(DEFAULT_ZOOM);  
