@@ -344,6 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
 
    function getCoordinates(event){
+      alert("mom");
       alert(event.latLng);
       // alert(memorial_overlay.getBounds());
    }
