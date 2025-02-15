@@ -1,4 +1,5 @@
 <div class="map-container" id="map" style="height:100%;"></div>
+<!-- <div id="overlay" style="position:absolute;top:0;bottom:0;left:0;right:0;background-color:white;z-index:1;pointer-events: none;"></div> -->
       <ul class="navbar-nav" style="width:3rem;position:absolute;top: 58px;right:5px;left: inherit;">
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-rotateleft"><i class="icon-rotate-ccw3"></i></button>
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-rotateright"><i class="icon-rotate-cw3"></i></button>

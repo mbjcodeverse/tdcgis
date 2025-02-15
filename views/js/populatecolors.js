@@ -30,38 +30,36 @@ document.addEventListener('DOMContentLoaded', function() {
           tilt: DEFAULT_TILT,
           heading: DEFAULT_HEADING,
           mapId: "90f87356969d889c",
-          styles: [{
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#fff050"
-            }]
-          },
-          {
-            "elementType": "geometry.stroke",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          },
-          {
-            "elementType": "labels",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          }
-        ]
+          styles: [
+            {
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"  // White background for the map
+                }
+              ]
+            },
+            {
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#000000"  // Optional: Adjust text color if needed
+                }
+              ]
+            }
+          ]
         });
 
         loadGroundOverlay(svgUrl);
         colorizeLots();
-        
-
-        // google.maps.event.addListener(polygon, 'click', function(event) {
-        //     alert('Polygon clicked!');
-        // });  
-
-        // document.getElementById('L3-001A').addEventListener('click', function() {
-        //     window.location.href = 'https://www.example.com';
-        // });
   
         $("#btn-reset").click(function(){
            map.setCenter(ROSELAWN);
@@ -101,11 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#btn-remove-overlay").click(function(){
            removeOverlay();
         });  
-  
-        // get Latitude and Longitude value
-        // map.addListener("rightclick", (mapsMouseEvent) => {
-        //    alert(mapsMouseEvent.latLng);
-        // });  
   
         $(".salesTransactionTable tbody").on("click", "button.btnSale", function(){
             $("#modal-search-sales").modal("hide");
@@ -219,124 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#btn-changecolor").click(function(){
             changeFillColor('lightyellow');
         });
-
-        // document.querySelectorAll('polygon').forEach(function(polygon) {
-        //     alert("mom");
-        //     polygon.addEventListener('click', lotClickHandler);
-        // });
     } // end async  
-
-
-
-
-
-
-
-
-
-   //  function colorizeLots(){
-   //    var percent = 0;
-   //    var notice = new PNotify({
-   //       text: "Codifying map..",
-   //       addclass: 'stack-left-right bg-primary border-primary',
-   //       type: 'info',
-   //       icon: 'icon-spinner4 spinner',
-   //       hide: false,
-   //       buttons: {
-   //          closer: false,
-   //          sticker: false
-   //       },
-   //       opacity: .9,
-   //       width: "190px"
-   //    });
-
-   //    $.ajax({
-   //       url:"ajax/lot_all_list.ajax.php",   
-   //       method: "POST",                                    
-   //       cache: false,                  
-   //       contentType: false,            
-   //       processData: false,   
-   //       async: false,         
-   //       dataType:"json",               
-   //       success:function(answer){
-   //          fetch(svgUrl)
-   //            .then(response => response.text())
-   //            .then(svgText => {
-   //                // Modify the SVG content to change the fill color
-   //                let parser = new DOMParser();
-   //                let svgDoc = parser.parseFromString(svgText, "image/svg+xml");
-
-   //                const svgElementId = 'L3-001A';
-   //                const svgElement = svgDoc.getElementById(svgElementId);
-
-   //                // if (svgElement) {
-   //                //    svgElement.addEventListener('click', () => {
-   //                //      alert('SVG element clicked!');
-   //                //    });
-             
-   //                //    alert("SVG element: " + svgElement);
-   //                //  } else {
-   //                //    alert(`Element with id ${svgElementId} not found in the SVG.`);
-   //                //  }
-
-   //                for(var i = 0; i < answer.length; i++) {  
-   //                   percent = Math.round(i/answer.length*100);
-   //                   var options = {
-   //                       text: percent + "% complete."
-   //                   };   
-
-   //                   let lc = answer[i];
-   //                   let lotid = lc.lotid;
-   //                   let lotstatus = lc.lotstatus;
-   //                   const polygon = svgDoc.getElementById(lotid);
-
-   //                   if (polygon){
-   //                      // polygon.addEventListener('click', () => {
-   //                      //    alert('SVG element clicked!');
-   //                      // });
-
-   //                      // polygon.addEventListener('click', function (event) {
-   //                      //    alert("clicked");
-   //                      //    if (event.target.tagName.toLowerCase() === 'polygon') {
-   //                      //        alert('SVG polygon clicked! ID: ' + event.target.id);
-   //                      //    }
-   //                      // });
-
-   //                      switch(lotstatus){
-   //                         case lotstatus = 'Sold':
-   //                            polygon.setAttribute("fill", 'palegreen');
-   //                            break;
-   //                         case lotstatus = 'Cancelled':
-   //                            polygon.setAttribute("fill", 'deeppink');
-   //                            break;        
-   //                         default:     
-   //                            polygon.setAttribute("fill", 'azure');                             
-   //                      }
-   //                   }
-   //                }
-
-   //                notice.update(options);
-   //                notice.remove();
-
-   //                // Convert the SVG back to a data URL
-   //                let serializer = new XMLSerializer();
-   //                let newSvgText = serializer.serializeToString(svgDoc);
-   //                let newSvgUrl = "data:image/svg+xml;base64," + btoa(newSvgText);
-
-   //                loadGroundOverlay(newSvgUrl);
-   //             });
-   //       },
-   //       beforeSend: function() {
-   //       },  
-   //       complete: function() {
-   //       }, 
-   //    })      
-   //  }
-
-
-
-
-
 
 
    function colorizeLots() {
@@ -440,16 +316,14 @@ document.addEventListener('DOMContentLoaded', function() {
          url,
          imageBounds
       );
-      
+
       if (memorial_overlay != null){
          memorial_overlay.setMap(null);
       }
-
-      // mapGroundOverlay.setZIndex(10);
+      
       mapGroundOverlay.setMap(map);
       memorial_overlay = mapGroundOverlay;
       
-
       google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
 
       // Wait for the overlay to be added to the map
@@ -457,52 +331,6 @@ document.addEventListener('DOMContentLoaded', function() {
          addPolygonClickEvent();
       });
    }
-
-   //  function addPolygonClickEvent() {
-   //    fetch(svgUrl)
-   //        .then(response => response.text())
-   //        .then(svgText => {
-   //            let parser = new DOMParser();
-   //            let svgDoc = parser.parseFromString(svgText, "image/svg+xml");
-  
-   //            // Find all polygons and ensure pointer-events are enabled
-   //            const polygons = svgDoc.querySelectorAll('polygon');
-   //            polygons.forEach(polygon => {
-   //                // Enable pointer events for interactivity
-   //                polygon.setAttribute("style", "pointer-events: auto;");
-                  
-   //                // Store the original fill color to restore it later
-   //                const originalFillColor = polygon.getAttribute('fill');
-                  
-   //                // Set unique ID if not already present
-   //                if (!polygon.id) {
-   //                    polygon.id = 'polygon-' + Math.random().toString(36).substr(2, 9);
-   //                }
-
-   //                // alert(polygon.id);
-  
-   //                // Add hover event listener to change color on mouse over
-   //                polygon.addEventListener('mouseover', function () {
-   //                    polygon.setAttribute('fill', 'orange');  // Change the color on hover
-   //                });
-  
-   //                // Add event listener to restore the color when mouse leaves
-   //                polygon.addEventListener('mouseout', function () {
-   //                    polygon.setAttribute('fill', originalFillColor);  // Restore original color
-   //                });
-  
-   //                // Add click event listener
-   //                polygon.addEventListener('click', function () {
-   //                    // Optional: You can alert the user with the polygon ID or do other actions
-   //                    console.log("Clicked on polygon with ID: " + polygon.id);
-   //                    alert("Clicked on polygon with ID: " + polygon.id);
-   //                });
-   //            });
-  
-   //            // You can insert the updated SVG back into the DOM
-   //            document.getElementById('svgContainer').appendChild(svgDoc.documentElement);
-   //        });
-   //  }
   
     function addPolygonClickEvent() {
       fetch(svgUrl)
@@ -570,8 +398,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
  
     function getCoordinates(event){
-       alert("mom");
        alert(event.latLng);
+       alert("north:" + map.getBounds().getNorthEast().lng() + " west:" + map.getBounds().getSouthWest().lng()  + " east:" + map.getBounds().getNorthEast().lng()   + " south:" + map.getBounds().getSouthWest().lng());
        // alert(memorial_overlay.getBounds());
     }
  
