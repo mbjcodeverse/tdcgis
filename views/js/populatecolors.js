@@ -11,10 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const DEFAULT_TILT = 25;
     const DEFAULT_HEADING = -40;
 
-    const NORTH_BOUND = 10.712408011651695;
-    const SOUTH_BOUND = 10.706009446450304;
-    const EAST_BOUND = 122.97356933277679;
-    const WEST_BOUND = 122.9671846920831;
+   //  const NORTH_BOUND = 10.712408011651695;
+   //  const SOUTH_BOUND = 10.706009446450304;
+   //  const EAST_BOUND = 122.97356933277679;
+   //  const WEST_BOUND = 122.9671846920831;
+
+    const NORTH_BOUND = 10.71375859351712;
+    const SOUTH_BOUND = 10.70483347023642;
+    const EAST_BOUND = 122.97532493765634;
+    const WEST_BOUND = 122.96562237902165;
 
     const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
    //  const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_modified.svg";
@@ -65,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
          //    }
          //  ]
         });
-      //   loadWhiteOverlay();
+        loadWhiteOverlay();
         loadGroundOverlay(svgUrl);
         colorizeLots();
   
@@ -233,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Create a white image to overlay on the map
       const whiteOverlayUrl = "data:image/svg+xml;base64," + btoa(`
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-              <rect x="0" y="0" width="100%" height="100%" fill="red" opacity="0.8"/>
+              <rect x="0" y="0" width="100%" height="100%" fill="white" opacity="1.0"/>
           </svg>
       `);
 
@@ -354,6 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mapGroundOverlay.setMap(map);
       memorial_overlay = mapGroundOverlay;
       
+      google.maps.event.addListener(map,'rightclick',getCoordinates);
       google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
 
       // Wait for the overlay to be added to the map
