@@ -30,34 +30,42 @@ document.addEventListener('DOMContentLoaded', function() {
           tilt: DEFAULT_TILT,
           heading: DEFAULT_HEADING,
           mapId: "90f87356969d889c",
-          styles: [
-            {
-              "elementType": "geometry",
-              "stylers": [
-                {
-                  "color": "#000000"  // White background for the map
-                }
-              ]
-            },
-            {
-              "elementType": "labels.icon",
-              "stylers": [
-                {
-                  "visibility": "off"
-                }
-              ]
-            },
-            {
-              "elementType": "labels.text.fill",
-              "stylers": [
-                {
-                  "color": "#000000"  // Optional: Adjust text color if needed
-                }
-              ]
-            }
-          ]
+         //  styles: [
+         //    {
+         //      "elementType": "geometry",
+         //      "stylers": [
+         //        {
+         //          "color": "#f0f0f0"  // Background color (light grey for the map)
+         //        }
+         //      ]
+         //    },
+         //    {
+         //      "elementType": "labels.icon",
+         //      "stylers": [
+         //        {
+         //          "visibility": "off"
+         //        }
+         //      ]
+         //    },
+         //    {
+         //      "elementType": "labels.text.fill",
+         //      "stylers": [
+         //        {
+         //          "color": "#000000"
+         //        }
+         //      ]
+         //    },
+         //    {
+         //      "elementType": "labels.text.stroke",
+         //      "stylers": [
+         //        {
+         //          "color": "#ffffff"
+         //        }
+         //      ]
+         //    }
+         //  ]
         });
-
+      //   loadWhiteOverlay();
         loadGroundOverlay(svgUrl);
         colorizeLots();
   
@@ -214,6 +222,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } // end async  
 
+   function loadWhiteOverlay() {
+      const imageBounds = {
+          north: NORTH_BOUND,
+          south: SOUTH_BOUND,
+          east: EAST_BOUND,
+          west: WEST_BOUND,
+      };
+
+      // Create a white image to overlay on the map
+      const whiteOverlayUrl = "data:image/svg+xml;base64," + btoa(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <rect x="0" y="0" width="100%" height="100%" fill="red" opacity="0.8"/>
+          </svg>
+      `);
+
+      const white_overlay = new google.maps.GroundOverlay(
+          whiteOverlayUrl,
+          imageBounds
+      );
+
+      white_overlay.setMap(map);
+   }
 
    function colorizeLots() {
       var percent = 0;
