@@ -352,6 +352,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const { target } = domEvent;
         alert("Lot info here...");
       });
+
+      google.maps.event.addListener(marker, 'mouseover', () => {
+         marker.setAnimation(null); // Stop bouncing on hover
+      });
+
+      google.maps.event.addListener(marker, 'mouseout', () => {
+         marker.setAnimation(google.maps.Animation.BOUNCE); // Resume bouncing when hover ends
+      });
    }
 
    // Sets the map on all markers in the array.
