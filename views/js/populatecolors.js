@@ -440,6 +440,14 @@ document.addEventListener('DOMContentLoaded', function() {
          map,
          title: info,
          animation: google.maps.Animation.DROP,
+         animation: google.maps.Animation.BOUNCE,
+         icon: {
+            url: 'views/global_assets/images/cemetery_marker4.png', // Replace with your PNG image URL
+            scaledSize: new google.maps.Size(90, 90),  // Optional: Adjust size as needed
+            origin: new google.maps.Point(0, 0),      // Optional: Use for cropping the image
+            anchor: new google.maps.Point(25, 50),     // Optional: Set anchor point for marker positioning
+            rotation: 90
+          }
        });
        markers.push(marker);
        // Add a click listener for each marker, and set up the info window.
