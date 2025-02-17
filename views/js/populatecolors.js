@@ -7,16 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let markers = [];
     
     const ROSELAWN = { lat: 10.708723254211796, lng: 122.97120235552195 };
-    const DEFAULT_ZOOM = 18;
+   //  const ROSELAWN = { lat: 10.708153991308484, lng: 122.9717372921579 };
+    const DEFAULT_ZOOM = 20;
     const DEFAULT_TILT = 25;
     const DEFAULT_HEADING = -40;
 
-    const NORTH_BOUND = 10.712408011651695;
-    const SOUTH_BOUND = 10.706009446450304;
-    const EAST_BOUND = 122.97356933277679;
-    const WEST_BOUND = 122.9671846920831;
+    const NORTH_BOUND = 10.709901938631898;
+    const SOUTH_BOUND = 10.707156510822154;
+    const EAST_BOUND = 122.97331767235437;
+    const WEST_BOUND = 122.969285524896;
 
     const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
+   //  const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_expanded1.svg";
 
     async function initMap() {
         const { Map, InfoWindow } = await google.maps.importLibrary("maps");
@@ -30,6 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
           heading: DEFAULT_HEADING,
           mapId: "90f87356969d889c",
         });
+
+      //   var bounds = {
+      //       north: 10.709981515934437, // northernmost latitude
+      //       south: 10.707837658871524, // southernmost latitude
+      //       east: 122.97259548873082, // easternmost longitude
+      //       west: 122.9686734703537 // westernmost longitude
+      //   };
+        
+      //   // Restrict panning to the defined bounds
+      //   map.setOptions({
+      //       restriction: {
+      //           latLngBounds: bounds,
+      //           strictBounds: false // If true, the user cannot pan outside the bounds
+      //       }
+      //   });
       
         loadGroundOverlay(svgUrl);
         colorizeLots();
@@ -90,19 +107,19 @@ document.addEventListener('DOMContentLoaded', function() {
             let categorycode = $("#nav-categorycode").val();
             switch(categorycode) {
                case '0001':         // Lawn 3
-                  map.setCenter({lat:10.710717276739038, lng:122.97158022186017});
-                  map.setZoom(20);
+                  map.setCenter({lat:10.708361145214257, lng:122.97178867542586});
+                  map.setZoom(25);
                   break;
                case '0002':         // Court
-                  map.setCenter({lat:10.707394852681466, lng:122.97139213166706});
-                  map.setZoom(20);
+                  map.setCenter({lat:10.708284343693744, lng:122.97087192552905});
+                  map.setZoom(21);
                   break;   
                case '0003':         // Garden
-                  map.setCenter({lat:10.709046890179243, lng:122.97058193180274});
-                  map.setZoom(20);
+                  map.setCenter({lat:10.70910615126373, lng:122.97046759815683});
+                  map.setZoom(21);
                   break;   
                case '0008':         // Lawn 2
-                  map.setCenter({lat:10.709058284134189, lng:122.97144171181529});
+                  map.setCenter({lat:10.708751443167795, lng:122.97038500633582});
                   map.setZoom(20);
                   break;   
                default:
@@ -273,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
          position,
          map,
          title: info,
-         animation: google.maps.Animation.DROP,
+         animation: google.maps.Animation.BOUNCE,
          icon: {
             url: 'views/global_assets/images/cemetery_marker4.png', // Replace with your PNG image URL
             scaledSize: new google.maps.Size(90, 90),  // Optional: Adjust size as needed
@@ -281,19 +298,18 @@ document.addEventListener('DOMContentLoaded', function() {
             anchor: new google.maps.Point(25, 50),     // Optional: Set anchor point for marker positioning
             rotation: 90
           }
-        //  icon: {
-        //     url: "data:image/svg+xml;utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' fill='%23A9A9A9'/><text x='5' y='17' font-family='Arial' font-size='5' fill='white'>⚰</text></svg>", 
-        //     scaledSize: new google.maps.Size(40, 40)  // Adjust size as needed
-        //   }
-        //  icon: {
-        //     url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'  // Custom color using Google's pre-defined icons
-        //   }
        });
+
        markers.push(marker);
        // Add a click listener for each marker, and set up the info window.
        marker.addListener("click", ({ domEvent, position }) => {
          const { target } = domEvent;
          alert("Lot info here...");
+       });
+
+       // Stop bouncing when mouse hovers over the marker
+       marker.addListener('mouseover', function() {
+         marker.setAnimation(null); // Stop the bounce animation when mouse hovers
        });
     }
  
