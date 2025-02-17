@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const ROSELAWN = { lat: 10.708723254211796, lng: 122.97120235552195 };
    //  const ROSELAWN = { lat: 10.708153991308484, lng: 122.9717372921579 };
-    const DEFAULT_ZOOM = 20;
+    const DEFAULT_ZOOM = 18;
     const DEFAULT_TILT = 25;
     const DEFAULT_HEADING = -40;
 
