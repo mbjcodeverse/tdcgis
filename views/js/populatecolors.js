@@ -324,9 +324,16 @@ document.addEventListener('DOMContentLoaded', function() {
       memorial_overlay.setMap(map);
    }
 
+   let rightClickCounter = 0;
    function getCoordinates(event){
-      alert(event.latLng);
-      alert("north:" + map.getBounds().getNorthEast().lng() + " west:" + map.getBounds().getSouthWest().lng()  + " east:" + map.getBounds().getNorthEast().lng()   + " south:" + map.getBounds().getSouthWest().lng());
+      rightClickCounter++;
+      alert('Right-click count: ' + rightClickCounter);
+      var latLng = event.latLng;
+      var latitude = latLng.lat();
+      var longitude = latLng.lng();
+      alert("latitude:" + latitude + " longitude:" + longitude);
+      // alert(event.latLng);
+      // alert("north:" + map.getBounds().getNorthEast().lng() + " west:" + map.getBounds().getSouthWest().lng()  + " east:" + map.getBounds().getNorthEast().lng()   + " south:" + map.getBounds().getSouthWest().lng());
       // alert(memorial_overlay.getBounds());
    }
 
@@ -339,11 +346,12 @@ document.addEventListener('DOMContentLoaded', function() {
         animation: google.maps.Animation.DROP,
         animation: google.maps.Animation.BOUNCE,
         icon: {
-           url: 'views/global_assets/images/cemetery_marker4.png', // Replace with your PNG image URL
-           scaledSize: new google.maps.Size(90, 90),  // Optional: Adjust size as needed
+           url: 'views/global_assets/images/lot_marker.png', // Replace with your PNG image URL
+           scaledSize: new google.maps.Size(40, 54),  // Optional: Adjust size as needed
            origin: new google.maps.Point(0, 0),      // Optional: Use for cropping the image
            anchor: new google.maps.Point(25, 50),     // Optional: Set anchor point for marker positioning
            rotation: 90
+         //   anchor: new google.maps.Point(38, 52)
          }
       });
       markers.push(marker);
