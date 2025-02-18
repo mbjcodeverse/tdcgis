@@ -9,4 +9,10 @@ class ControllerHome{
 		$answer = (new ModelHome)->mdlLotCategoryList($categorycode);
 		return $answer;
 	}			
+
+	// Update EXISTING RECORD
+	static public function ctrPostLotLocation($data){
+		$answer = (new ModelHome)->mdlPostLotLocation($data);
+		return $answer;
+	}
 }

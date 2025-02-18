@@ -13,6 +13,33 @@ class ModelHome{
 		return $stmt -> fetchAll();
 	}
 
+	static public function mdlPostLotLocation($data){
+		$db = new Connection();
+		$pdo = $db->connect();
+        try{
+        	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->beginTransaction();
+
+            // PO # not included
+			$stmt = $pdo->prepare("UPDATE lotinfo SET latitude = :latitude, longitude = :longitude WHERE id = :id");
+
+			$stmt->bindParam(":latitude", $data["latitude"], PDO::PARAM_STR);
+			$stmt->bindParam(":longitude", $data["longitude"], PDO::PARAM_STR);
+			$stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
+			
+			$stmt->execute();
+			$id = $data["id"];
+		    $pdo->commit();
+		    return $id;
+		}catch (Exception $e){
+			$pdo->rollBack();
+			return "error";
+		}	
+		$pdo = null;	
+		$stmt = null;
+	}	
+
+
 	// static public function mdlShowFilteredMachineList($classcode, $buildingcode, $machstatus){
 	// 	if ($classcode != ''){
 	// 		$class = " AND (classcode = '$classcode')";
