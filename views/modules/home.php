@@ -7,7 +7,7 @@
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-tiltdown"><i class="icon-arrow-down7"></i></button>
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-tiltdown" data-toggle="modal" data-target="#modal-search-sales"><i class="icon-search4"></i></button>
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-clearmarkers"><i class="icon-eraser"></i></button> 
-        <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-drawpolygon"><i class="icon-eraser"></i></button>           
+        <!-- <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-drawpolygon"><i class="icon-eraser"></i></button>            -->
       </ul>
 
       <!-- <button id="btn-changecolor">Change Fill to Red</button> -->

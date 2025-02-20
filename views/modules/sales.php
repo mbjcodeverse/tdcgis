@@ -24,7 +24,7 @@
 
             <div class="col-sm-4 form-group">
                 <label for="tns-fname">Firstname</label>
-                <input type="text" class="form-control text-capitalize" id="tns-fname" name="tns-fname" autocomplete="nope" disabled required>
+                <input type="text" class="form-control text-capitalize" id="txt-fname" name="tns-fname" autocomplete="nope" disabled required>
             </div>
 
             <div class="col-sm-1 form-group">
@@ -90,17 +90,17 @@
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label for="txt-lname">Beneficiary Lastname</label>
-                <input type="text" class="form-control text-capitalize" id="txt-lname" name="txt-lname" autocomplete="nope" required>
+                <input type="text" class="form-control text-capitalize" id="txt-blname" name="txt-lname" autocomplete="nope" required>
             </div>
 
             <div class="col-sm-4 form-group">
                 <label for="tns-fname">Beneficiary Firstname</label>
-                <input type="text" class="form-control text-capitalize" id="tns-fname" name="tns-fname" autocomplete="nope" required>
+                <input type="text" class="form-control text-capitalize" id="txt-bfname" name="tns-fname" autocomplete="nope" required>
             </div>
 
             <div class="col-sm-1 form-group">
                 <label for="txt-mi">MI</label>
-                <input type="text" class="form-control text-capitalize" id="txt-mi" maxlength='1' name="txt-mi" autocomplete="nope">
+                <input type="text" class="form-control text-capitalize" id="txt-bmi" maxlength='1' name="txt-mi" autocomplete="nope">
             </div>
 
             <div class="col-sm-1 form-group">
@@ -164,7 +164,7 @@
           <input type="hidden" id="num-id" name="num-id">
 
           <span class="float-right">
-            <button type="button" class="btn btn-light btn-lg" id="btn-new" onClick="location.href='employees'"><i class="icon-file-text mr-2"></i> New</button>
+            <button type="button" class="btn btn-light btn-lg" id="btn-new"><i class="icon-file-text mr-2"></i> New</button>
 
             <button type="button" class="btn btn-light btn-lg" id="btn-search" data-toggle="modal" data-target="#modal-search-sales"><i class="icon-search4 mr-2"></i> Search</button>
            

@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
          heading: DEFAULT_HEADING,
          mapId: "90f87356969d889c",
        });
-     //   loadWhiteOverlay();
+
+
+       
+      //  loadWhiteOverlay();
        loadGroundOverlay(svgUrl);
        colorizeLots();
  
@@ -232,31 +235,53 @@ document.addEventListener('DOMContentLoaded', function() {
   }
    
   function loadGroundOverlay(url){
-     const imageBounds = {
+      // const rectangleBounds = {
+      //    north: 10.717953327196527,  // North lat
+      //    south: 10.697886215106786,  // South lat
+      //    east: 122.98216773121868, // East lng
+      //    west: 122.9574315595313, // West lng
+      // };
+
+      // const rectangle = new google.maps.Rectangle({
+      //    bounds: rectangleBounds,
+      //    editable: true, // Optionally, allow the rectangle to be edited
+      //    draggable: false, // Optionally, make the rectangle draggable
+      //    map: map,
+      //    fillColor: 'red',
+      //    fillOpacity: 0.35,
+      //    strokeColor: '#FF0000',
+      //    strokeOpacity: 0.8,
+      //    strokeWeight: 2,
+      //    zIndex: 0,
+      // });
+
+      const imageBounds = {
         north: NORTH_BOUND,
         south: SOUTH_BOUND,
         east: EAST_BOUND,
         west: WEST_BOUND,
-     };
+      };
 
-     const mapGroundOverlay = new google.maps.GroundOverlay(
+      const mapGroundOverlay = new google.maps.GroundOverlay(
         url,
-        imageBounds
-     );
+        imageBounds,
+      );
 
-     if (memorial_overlay != null){
+      if (memorial_overlay != null){
         memorial_overlay.setMap(null);
-     }
+      }
      
-     mapGroundOverlay.setMap(map);
-     memorial_overlay = mapGroundOverlay;
+      mapGroundOverlay.setMap(map);
+      memorial_overlay = mapGroundOverlay;
+      
      
-     google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
+      google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
 
-     // Wait for the overlay to be added to the map
-     google.maps.event.addListenerOnce(map, 'idle', function() {
+      // Wait for the overlay to be added to the map
+      google.maps.event.addListenerOnce(memorial_overlay, 'idle', function() {
         addPolygonClickEvent();
-     });
+      });
+      // rectangle.setMap(map);
   }
  
    function addPolygonClickEvent() {
@@ -327,37 +352,38 @@ document.addEventListener('DOMContentLoaded', function() {
    let id = 0;
    function getCoordinates(event){
       // Last id saved = 40;
-      id++;
-      // alert('Right-click count: ' + id);
+      // id++;
+      // // alert('Right-click count: ' + id);
       var latLng = event.latLng;
       var latitude = latLng.lat();
       var longitude = latLng.lng();
 
-      var save_location = new FormData();
-      save_location.append("id", id);
-      save_location.append("latitude", latitude);
-      save_location.append("longitude", longitude);
+      // var save_location = new FormData();
+      // save_location.append("id", id);
+      // save_location.append("latitude", latitude);
+      // save_location.append("longitude", longitude);
 
-      $.ajax({
-         url:"ajax/save_location.ajax.php",
-         method: "POST",
-         data: save_location,
-         cache: false,
-         contentType: false,
-         processData: false,
-         async: false,
-         dataType:"text",
-         success:function(answer){
-            swal.fire({
-               title: 'Location ' + id + ' successfully saved!',
-               type: 'success',
-               allowOutsideClick: false,
-               showConfirmButton: false,
-               timer: 1500
-            })
-         }
-      })   
-      // alert("latitude:" + latitude + " longitude:" + longitude);
+      // $.ajax({
+      //    url:"ajax/save_location.ajax.php",
+      //    method: "POST",
+      //    data: save_location,
+      //    cache: false,
+      //    contentType: false,
+      //    processData: false,
+      //    async: false,
+      //    dataType:"text",
+      //    success:function(answer){
+      //       swal.fire({
+      //          title: 'Location ' + id + ' successfully saved!',
+      //          type: 'success',
+      //          allowOutsideClick: false,
+      //          showConfirmButton: false,
+      //          timer: 1500
+      //       })
+      //    }
+      // })   
+
+      alert("latitude:" + latitude + " longitude:" + longitude);
       // alert(event.latLng);
       // alert("north:" + map.getBounds().getNorthEast().lng() + " west:" + map.getBounds().getSouthWest().lng()  + " east:" + map.getBounds().getNorthEast().lng()   + " south:" + map.getBounds().getSouthWest().lng());
       // alert(memorial_overlay.getBounds());
