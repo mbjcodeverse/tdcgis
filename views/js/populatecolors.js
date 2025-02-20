@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
    const WEST_BOUND = 122.9671846920831;
 
    const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
-  //  const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_modified.svg";
 
    async function initMap() {
        const { Map, InfoWindow } = await google.maps.importLibrary("maps");
@@ -122,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
        });
    } // end async  
 
-  function loadWhiteOverlay() {
+   function loadWhiteOverlay() {
      const imageBounds = {
          north: NORTH_BOUND,
          south: SOUTH_BOUND,
@@ -143,9 +142,9 @@ document.addEventListener('DOMContentLoaded', function() {
      );
 
      white_overlay.setMap(map);
-  }
+   }
 
-  function colorizeLots() {
+   function colorizeLots() {
      var percent = 0;
      var notice = new PNotify({
         text: "Codifying map..",
@@ -224,17 +223,17 @@ document.addEventListener('DOMContentLoaded', function() {
         complete: function() {
         },
      });
-  }
+   }
   
-  // Function to handle click event for polygons
-  function attachClickHandler(polygon) {
+   // Function to handle click event for polygons
+   function attachClickHandler(polygon) {
      polygon.addEventListener('click', function(event) {
         alert('mom');
         alert("Clicked on polygon with ID: " + event.target.id);
      });
-  }
+   }
    
-  function loadGroundOverlay(url){
+   function loadGroundOverlay(url){
       // const rectangleBounds = {
       //    north: 10.717953327196527,  // North lat
       //    south: 10.697886215106786,  // South lat
@@ -282,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addPolygonClickEvent();
       });
       // rectangle.setMap(map);
-  }
+   }
  
    function addPolygonClickEvent() {
      fetch(svgUrl)
@@ -400,13 +399,12 @@ document.addEventListener('DOMContentLoaded', function() {
         animation: google.maps.Animation.DROP,
       //   animation: google.maps.Animation.BOUNCE,
         icon: {
-           url: 'views/global_assets/images/lot_marker.png', // Replace with your PNG image URL
-           scaledSize: new google.maps.Size(40, 54),  // Optional: Adjust size as needed
-           origin: new google.maps.Point(0, 0),      // Optional: Use for cropping the image
-           anchor: new google.maps.Point(25, 50),     // Optional: Set anchor point for marker positioning
+           url: 'views/global_assets/images/lot_marker.png',   // Replace with your PNG image URL
+           scaledSize: new google.maps.Size(40, 54),           // Optional: Adjust size as needed
+           origin: new google.maps.Point(0, 0),                // Optional: Use for cropping the image
+           anchor: new google.maps.Point(25, 50),              // Optional: Set anchor point for marker positioning
            rotation: 45,          
            //   rotation: 90
-         //   anchor: new google.maps.Point(38, 52)
          }
       });
 
@@ -415,17 +413,23 @@ document.addEventListener('DOMContentLoaded', function() {
          disableAutoPan: true,  // Prevents the map from panning when opened
       });
 
-        // Remove the close button when the info window is opened
-  google.maps.event.addListener(infoWindow, 'domready', function () {
-   // Select the close button and remove it
-   const closeButton = document.querySelector('.gm-ui-hover-effect');
-   if (closeButton) {
-     closeButton.style.display = 'none'; // Hide the close button
-   }
- });
+      // Remove the close button when the info window is opened
+      google.maps.event.addListener(infoWindow, 'domready', function () {
+         // Select the close button and remove it
+         const closeButton = document.querySelector('.gm-ui-hover-effect');
+         if (closeButton) {
+            closeButton.style.display = 'none'; // Hide the close button
+         }
+      });
 
       marker.addListener('mouseover', () => {
          infoWindow.open(map, marker);
+         // Apply custom shadow to the info window
+         const iwOuter = document.querySelector(".gm-style-iw"); // This targets the info window outer element
+         // Apply a shadow to the outer element
+         iwOuter.style.boxShadow = "10px 10px 15px rgba(0, 0, 0, 0.5)";
+         // Optional: You can adjust the shadow effect by changing the values
+         iwOuter.style.borderRadius = "10px"; // Optional: make the info window corners rounded
       });
 
       marker.addListener('mouseout', () => {
