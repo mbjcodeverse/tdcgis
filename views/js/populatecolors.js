@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
       google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
 
       // Wait for the overlay to be added to the map
-      google.maps.event.addListenerOnce(memorial_overlay, 'idle', function() {
+      google.maps.event.addListenerOnce(map, 'idle', function() {
         addPolygonClickEvent();
       });
       // rectangle.setMap(map);
@@ -301,6 +301,8 @@ document.addEventListener('DOMContentLoaded', function() {
          if (!polygon.id) {
            polygon.id = 'polygon-' + Math.random().toString(36).substr(2, 9);  // Generate random ID if not present
          }
+
+         // alert(polygon.id);
    
          // Add click event listener
          polygon.addEventListener('click', function() {
@@ -396,30 +398,55 @@ document.addEventListener('DOMContentLoaded', function() {
         map,
         title: info,
         animation: google.maps.Animation.DROP,
-        animation: google.maps.Animation.BOUNCE,
+      //   animation: google.maps.Animation.BOUNCE,
         icon: {
            url: 'views/global_assets/images/lot_marker.png', // Replace with your PNG image URL
            scaledSize: new google.maps.Size(40, 54),  // Optional: Adjust size as needed
            origin: new google.maps.Point(0, 0),      // Optional: Use for cropping the image
            anchor: new google.maps.Point(25, 50),     // Optional: Set anchor point for marker positioning
-           rotation: 90
+           rotation: 45,          
+           //   rotation: 90
          //   anchor: new google.maps.Point(38, 52)
          }
       });
+
+      const infoWindow = new google.maps.InfoWindow({
+         content: "<div><h3 style='color:red;'>Custom Info Window</h3><p style='color:green;'>This is a description.</p></div>",
+         disableAutoPan: true,  // Prevents the map from panning when opened
+      });
+
+        // Remove the close button when the info window is opened
+  google.maps.event.addListener(infoWindow, 'domready', function () {
+   // Select the close button and remove it
+   const closeButton = document.querySelector('.gm-ui-hover-effect');
+   if (closeButton) {
+     closeButton.style.display = 'none'; // Hide the close button
+   }
+ });
+
+      marker.addListener('mouseover', () => {
+         infoWindow.open(map, marker);
+      });
+
+      marker.addListener('mouseout', () => {
+         infoWindow.close();
+      });
+
       markers.push(marker);
       // Add a click listener for each marker, and set up the info window.
-      marker.addListener("click", ({ domEvent, position }) => {
-        const { target } = domEvent;
-        alert("Lot info here...");
-      });
+
+      // marker.addListener("click", ({ domEvent, position }) => {
+      //   const { target } = domEvent;
+      //   alert("Lot info here...");
+      // });
 
       google.maps.event.addListener(marker, 'mouseover', () => {
          marker.setAnimation(null); // Stop bouncing on hover
       });
 
-      google.maps.event.addListener(marker, 'mouseout', () => {
-         marker.setAnimation(google.maps.Animation.BOUNCE); // Resume bouncing when hover ends
-      });
+      // google.maps.event.addListener(marker, 'mouseout', () => {
+      //    marker.setAnimation(google.maps.Animation.BOUNCE); // Resume bouncing when hover ends
+      // });
    }
 
    // Sets the map on all markers in the array.
