@@ -354,38 +354,38 @@ document.addEventListener('DOMContentLoaded', function() {
    let id = 0;
    function getCoordinates(event){
       // Last id saved = 40;
-      // id++;
+      id++;
       // // alert('Right-click count: ' + id);
       var latLng = event.latLng;
       var latitude = latLng.lat();
       var longitude = latLng.lng();
 
-      // var save_location = new FormData();
-      // save_location.append("id", id);
-      // save_location.append("latitude", latitude);
-      // save_location.append("longitude", longitude);
+      var save_location = new FormData();
+      save_location.append("id", id);
+      save_location.append("latitude", latitude);
+      save_location.append("longitude", longitude);
 
-      // $.ajax({
-      //    url:"ajax/save_location.ajax.php",
-      //    method: "POST",
-      //    data: save_location,
-      //    cache: false,
-      //    contentType: false,
-      //    processData: false,
-      //    async: false,
-      //    dataType:"text",
-      //    success:function(answer){
-      //       swal.fire({
-      //          title: 'Location ' + id + ' successfully saved!',
-      //          type: 'success',
-      //          allowOutsideClick: false,
-      //          showConfirmButton: false,
-      //          timer: 1500
-      //       })
-      //    }
-      // })   
+      $.ajax({
+         url:"ajax/save_location.ajax.php",
+         method: "POST",
+         data: save_location,
+         cache: false,
+         contentType: false,
+         processData: false,
+         async: false,
+         dataType:"text",
+         success:function(answer){
+            swal.fire({
+               title: 'Location ' + id + ' successfully saved!',
+               type: 'success',
+               allowOutsideClick: false,
+               showConfirmButton: false,
+               timer: 1500
+            })
+         }
+      })   
 
-      alert("latitude:" + latitude + " longitude:" + longitude);
+      // alert("latitude:" + latitude + " longitude:" + longitude);
       // alert(event.latLng);
       // alert("north:" + map.getBounds().getNorthEast().lng() + " west:" + map.getBounds().getSouthWest().lng()  + " east:" + map.getBounds().getNorthEast().lng()   + " south:" + map.getBounds().getSouthWest().lng());
       // alert(memorial_overlay.getBounds());
