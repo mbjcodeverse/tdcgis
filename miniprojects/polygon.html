@@ -1,0 +1,237 @@
+				Debit						Credit
+				-----						------
+Credit				Accounts Receivable				Sales
+Cash				Cash On Hand					Sales
+With Discount (Credit)		Accounts Receivable				Sales Discount
+										Sales
+With Discount (Cash)		Cash On Hand		        		Sales Discount
+										Sales
+Sales Items			Cost of Sales					Merchandise Inventory
+Returned Items			Sales Return					Accounts Receivable
+
+AR (Cash)			Cash On Hand					Accounts Receivable
+AR (On-Date)			Cash On Hand					Accounts Receivable
+AR (Post-Dated)			Undeposited Collection				Accounts Receivable
+
+Incoming			Merchandise Inventory		 		Accounts Payable 
+Payable (Cash)			Accounts Payable 				Cash in Bank/ucpb 3667
+Payable (On-Date)		Accounts Payable 				Cash in Bank/ucpb 3667 
+Payable (Post-dated)		Undeposited Collection				Accounts Payable
+
+============================================================================================================
+				Debit						Credit
+				-----						------
+Credit				Accounts Receivable-Trade (11600)		Sales (per account)
+Cash				Cash On Hand					Sales (per account)
+With Discount (Credit)		Accounts Receivable-Trade (11600)		Sales (per account)
+										Sales Discounts (49000)
+With Discount (Cash)		Cash On Hand					Sales (per account)
+										Sales Discounts (49000)
+Sales Items			Cost of Sales (per account)			Merchandise Inventory (per account)/Merchandise Inventory (12000)
+Returned Items			Sales Returns and Allowances (48000)		Accounts Receivable-Trade (11600)
+
+AR (Cash)			Cash On Hand					Accounts Receivable-Trade (11600)
+AR (On-Date)			Cash On Hand					Accounts Receivable-Trade (11600)
+AR (Post-Dated)
+
+Incoming			Merchandise Inventory (per account)/		Accounts Payable (20000)
+				Merchandise Inventory (12000)
+Payable (Cash)			Accounts Payable (20000)
+Payable (On-Date)		Accounts Payable (20000)
+Payable (Post-dated)								Accounts Payable (20000)
+
+
+=====================================================================================================================
+
+Branch				Prodaccount			Bank
+------				-----------			----
+B001	Handumanan		001	Various			BA0001	UCPB
+B002	Bago			002	Red Onion		BA0002	RCBC Libertad
+B003	La Carlota		003	Texas			BA0003	BDO Libertad
+B004	Bagsakan		004	Fruits			BA0004	BDO Araneta
+B005	Murcia			005	Agricultural		BA0005	PNB Cyber Centre
+B006	Hinigaran		006	Oil			BA0006  China Bank
+B007	Main			007	MRL Juan Hundred	BA0007	BDO Kabankalan	
+B008	Fruitworld		008	MRL Fund		BA0008	Metrobank Kabankalan
+B009	Kabankalan						BA0009  Security Bank Kabankalan
+								BA0010  PSBC Kabankalan
+								BA0011  BDO Network Bank Cauayan
+								BA0012  Ist Valley Bank La Carlota
+								BA0013  China Bank Kabankalan
+								BA0014  PSBC Binalbagan
+
+
+Accategory (a)				Acctype	(b)					Chartaccnt (c)
+----------				-------						----------
+categoryid	V(3)			typeid		V(3)				accntid		V(4)
+categorydesc	V(20)			typedesc	V(50)				accntcode	I(5)
+											accntdesc	V(6)
+categoryid	categorydesc		typeid		typedesc			typeid		V(3)
+----------	------------		------		--------			categoryid	V(3)
+001		Assets			001		Accounts Payable		entry		V(2)
+002		Cost of Sales		002		Accounts Receivable		bankcode	V(6)
+003		Equity			003		Accumulated Depreciation	accountcode	V(3)
+004		Expenses		004		Cash				branchcode	V(4)
+005		Income			005		Cost of Sales
+006		Liabilities		006		Equity (Open)
+					007		Equity (Closable)
+					008		Equity - Retained Earnings
+					009		Expenses
+					010		Fixed Assets
+					011		Income
+					012		Inventory
+					013		Long Term Liabilities
+					014		Other Assets
+					015		Other Current Assets
+					016		Other Current Liabilities
+
+
+Branch (d)				Masterproducts (e)				Prodaccount (f)
+------					--------------					-----------
+branchcode	V(4)			prodid		V(6)				accountcode	V(3)
+bname		V(45)			accountcode	V(3)				accountdesc	V(35)
+
+
+Sales (g)					Salesitems (h)
+-----						----------
+branchcode	V(4)				invno		V(14)
+sdate		D				qty		F(9,2)
+invno		V(14)				ucost		F(9,2)
+salemode	V(7) - Counter, Credit		price		F(9,2)
+customercode	V(6)				tamount		F(12,2)
+status		V(20) - Sold, Return, Void	prodid		V(6)
+
+
+Receivable (g)					Receivableitems (h)
+----------					---------------
+paynum		V(17)				paynum		V(17)
+branchcode	V(4)				invno		V(14)
+paydate		D				amount		F(12,2)
+paymode		V(5) - Cash, Check
+checkdesc	V(10) - On-date, Post-dated
+bankcode	V(6)
+checknum	V(20
+checkdate	D
+amount		F(12,2)
+customercode	V(6)
+paystatus	V(10) - Paid
+
+
+Incoming (g)					Incomingitems (h)		Purchaseorder (i)
+--------					-------------			-------------
+ponumber	V(15)				delnumber	V(15)		suppliercode	V(6)
+deldate		D				ponumber	V(15)		podate		D
+delstatus	V(10)				qty		F(9,2)		postatus	V(10)
+delnumber	V(15)				price		F(9,2)		ponumber	V(15)
+netamount	D(13,2)				tamount		D(11,2)		branchcode	V(4)
+						prodid		V(6)		netamount	D(13,2)
+
+
+Payable (g)					Payableitems (h)
+----------					---------------
+paynum		V(17)				paynum		V(17)
+accntid		V(30)				delnumber	V(15)
+paydate		D				amount		F(12,2)
+paymode		V(5) - Cash, Check
+checkdesc	V(10) - On-date, Post-dated
+bankcode	V(6)
+checknum	V(20
+checkdate	D
+amount		F(12,2)
+suppliercode	V(6)
+paystatus	V(10) - Paid
+
+
+payee (a)
+-----
+payeeid		V(9)
+pname		V(56)
+isactive	I(1)
+address		V(36)
+
+
+bills (d)		billsdetails (e)	 payablebills (b)	payablebillsitems (c)	checks (b)		checkdetails (c)
+---------		------------		 ------------		-----------------	------			------------
+refnum		V(14)	refnum		V(14)	 paynum		V(17)	paynum	   V(17)	refnum		V(14)	refnum		V(14)
+branchcode	V(4)	accntcode	I(6)	 paydate	D	refnum	   V(14)	branchcode	V(4)	accntcode	SI(6)
+entrydate	D	details		V(150)	 paymode	V(5)	amount	   F(12,2)	paydate		D	details		V(150)
+tstatus		V(9)	amount		F(12,2)	 checkdesc	V(10)				tstatus-Posted	V(9)	amount		F(12,2)
+payeeid		V(9)				 accntid	V(8)				payeeid		V(9)
+term		TI				 checknum	V(20)				accntid		V(4)
+billdate	D				 checkdate	D				checkdate	D
+duedate		D				 amount		F(12,2)				checknum	V(30)
+billnum		V(30)				 payeeid	V(9)				memo		V(180)
+memo		V(180)				 particulars	V(60)				accountlist	T
+accountlist	T				 postedby	V(7)				postedby	V(7)
+postedby	V(7)				 postdate	D				amount		F(12,2)
+amount		F(11,2)				 maturedate	D
+						 paystatus	V(10) -Paid
+						 paymentlist	T
+
+
+sales (b)					 receivable (b)
+-----						 ----------
+branchcode	V(4)				 paynum		V(17)	 	
+sdate		D				 branchcode	V(4)
+invno		V(14)				 paydate	D
+salemode	V(7)-Counter, Credit		 paymode	V(5)-Cash, Check
+customercode	V(6)				 checkdesc	V(10)-On-date, Post-dated
+status		V(20)-Sold, Return, Void         bankcode	V(6)
+amount		F(12,2)				 checknum	V(20)
+discount	F(12,2)				 checkdate	D
+netamount	F(12,2)				 amount		F(12,2)
+					         customercode	V(6)
+						 postdate	D
+						 maturedate	D
+						 paystatus	V(10)-Paid
+==================================================================================================================================
+
+				Debit						Credit
+				-----						------
+Bills Received			Office Supplies Expense: 500			Accounts Payable : 500
+Paid Bills			Accounts Payable: 500				Cash/Bank Account: 500
+
+
+SELECT 1 AS seq, 'Assets' AS category, 'Debit' AS entry, 'Incoming' AS description, 12000 AS accntcode, 'Merchandise Inventory' AS accntdesc, SUM(c.netamount) AS amount FROM purchaseorder AS b INNER JOIN incoming AS c ON (b.ponumber = c.ponumber) WHERE (c.delstatus = 'Posted')
+UNION ALL
+SELECT 2 AS seq, 'Liabilities' AS category, 'Credit' AS entry, 'Incoming' AS description, 20000 AS accntcode, 'Accounts Payable' AS accntdesc, SUM(c.netamount) AS amount FROM purchaseorder AS b INNER JOIN incoming AS c ON (b.ponumber = c.ponumber) WHERE (c.delstatus = 'Posted')
+UNION ALL
+SELECT 2 AS seq, 'Liabilities' AS category, 'Debit' AS entry, 'Payables' AS description, 20000 AS accntcode, 'Accounts Payable' AS accntdesc, SUM(e.amount) AS amount FROM payableitems AS e INNER JOIN payable AS d ON (e.paynum = d.paynum) INNER JOIN incoming AS c ON (e.delnumber = c.delnumber) INNER JOIN purchaseorder AS b ON (b.ponumber = c.ponumber) WHERE (d.paystatus = 'Paid')
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Credit' AS entry, 'Payables' AS description, a.accntcode, a.accntdesc, SUM(e.amount) FROM chartaccnt AS a INNER JOIN payable AS d ON (d.accntid = a.accntid) INNER JOIN payableitems AS e ON (e.paynum = d.paynum) INNER JOIN incoming AS c ON (e.delnumber = c.delnumber) INNER JOIN purchaseorder AS b ON (b.ponumber = c.ponumber) WHERE (d.paystatus = 'Paid') GROUP BY a.accntcode
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Debit' AS entry, 'Credit Sales' AS description, 11600 AS accntcode, 'Accounts Receivable-Trade' AS accntdesc, SUM(b.netamount) AS amount from sales AS b WHERE (b.salemode = 'Credit') AND (b.status = 'Sold')
+UNION ALL
+SELECT 5 AS seq, 'Cost of Sales' AS category, 'Debit' AS entry, 'Credit Sales' AS description, 58100 AS accntcode, 'Cost of Sales' AS accntdesc, SUM(c.ucost) AS amount from salesitems AS c INNER JOIN sales AS b ON (b.invno = c.invno) WHERE (b.salemode = 'Credit') AND (b.status = 'Sold') GROUP BY accntcode
+UNION ALL
+SELECT 4 AS seq, 'Income' AS category, 'Credit' AS entry, 'Credit Sales' AS description, 45550 AS accntcode, 'Sales' AS accntdesc, SUM(b.amount) AS amount from sales AS b WHERE (b.salemode = 'Credit') AND (b.status = 'Sold') GROUP BY accntcode
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Credit' AS entry, 'Credit Sales' AS description, 12000 AS accntcode, 'Merchandise Inventory' AS accntdesc, SUM(c.ucost) AS amount from salesitems AS c INNER JOIN sales AS b ON (b.invno = c.invno) WHERE (b.salemode = 'Credit') AND (b.status = 'Sold') GROUP BY accntcode
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Debit' AS entry, 'Receivable' AS description, 10980 AS accntcode, 'Cash On Hand' AS accntdesc, SUM(b.amount) AS amount from receivable AS b WHERE (b.paystatus = 'Paid')
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Credit' AS entry, 'Receivable' AS description, 11600 AS accntcode, 'Accounts Receivable-Trade' AS accntdesc, SUM(b.amount) AS amount from receivable AS b WHERE (b.paystatus = 'Paid')
+UNION ALL
+SELECT 6 AS seq, 'Expenses' AS category, 'Debit' AS entry, 'Unpaid Bills' AS description, e.accntcode, a.accntdesc, SUM(e.amount) FROM chartaccnt AS a INNER JOIN billsdetails AS e ON (a.accntcode = e.accntcode) INNER JOIN bills AS d ON (d.refnum = e.refnum) GROUP BY e.accntcode
+UNION ALL
+SELECT 2 AS seq, 'Liabilities' AS category, 'Credit' AS entry, 'Unpaid Bills' AS description, 20000 AS accntcode, 'Accounts Payable' AS accntdesc, SUM(b.amount) FROM bills AS b WHERE (b.tstatus = 'Posted') GROUP BY accntcode
+UNION ALL 
+SELECT 2 AS seq, 'Liabilities' AS category, 'Debit' AS entry, 'Paid Bills' AS description, 20000 AS accntcode, 'Accounts Payable' AS accntdesc, SUM(b.amount) FROM  payablebills AS b WHERE (b.paystatus = 'Paid') GROUP BY accntcode
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Credit' AS entry, 'Paid Bills' AS description, a.accntcode, a.accntdesc, SUM(b.amount) FROM chartaccnt AS a INNER JOIN payablebills AS b ON (a.accntid = b.accntid) WHERE (b.paystatus = 'Paid') GROUP BY a.accntcode
+UNION ALL
+SELECT 6 AS seq, 'Expenses' AS category, 'Debit' AS entry, 'Checks' AS description, c.accntcode, a.accntdesc, SUM(c.amount) FROM chartaccnt AS a INNER JOIN checkdetails AS c ON (a.accntcode = c.accntcode) INNER JOIN checks AS b ON (b.refnum = c.refnum) WHERE (b.tstatus = 'Posted') GROUP BY c.accntcode
+UNION ALL
+SELECT 1 AS seq, 'Assets' AS category, 'Credit' AS entry, 'Checks' AS description, a.accntcode, a.accntdesc, SUM(b.amount) FROM chartaccnt AS a INNER JOIN checks AS b ON (a.accntid = b.accntid) WHERE (b.tstatus = 'Posted') GROUP BY a.accntcode
+ORDER BY seq, accntcode;
+
+
+==================================================================================================================================
+
+70,407,225.83
+
+[ Counter Sales ]
+- DEBIT -
+SELECT c.accntid,c.accntdesc,SUM(h.tamount) AS amount FROM chartaccnt AS c INNER JOIN masterproducts AS e ON (c.accountcode = e.accountcode) INNER JOIN salesitems AS h ON (e.prodid = h.prodid) WHERE (c.typeid = '011') GROUP BY c.accntid;
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collapsible Items</title>
+</head>
+<body>
+  <script>
+    // Create a function to initialize the collapsible items
+    function createCollapsibleList(items) {
+      // Create a container for the list
+      const container = document.createElement('div');
+
+      items.forEach(item => {
+        // Create a button for each collapsible item
+        const button = document.createElement('button');
+        button.textContent = item.title;
+        button.style.backgroundColor = '#777';
+        button.style.color = 'white';
+        button.style.cursor = 'pointer';
+        button.style.padding = '10px';
+        button.style.width = '100%';
+        button.style.border = 'none';
+        button.style.textAlign = 'left';
+        button.style.outline = 'none';
+        button.style.fontSize = '15px';
+        button.style.marginBottom = '5px';
+
+        // Create a div for the content of each collapsible item
+        const content = document.createElement('div');
+        content.textContent = item.content;
+        content.style.padding = '0 18px';
+        content.style.display = 'none';
+        content.style.overflow = 'hidden';
+        content.style.backgroundColor = '#f1f1f1';
+        content.style.marginBottom = '5px';
+
+        // Add an event listener to the button to toggle the content
+        button.addEventListener('click', function() {
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            button.style.backgroundColor = '#777';
+          } else {
+            content.style.display = 'block';
+            button.style.backgroundColor = '#555';
+          }
+        });
+
+        // Append the button and content to the container
+        container.appendChild(button);
+        container.appendChild(content);
+      });
+
+      // Append the container to the body
+      document.body.appendChild(container);
+    }
+
+    // Define the items to be used in the collapsible list
+    const items = [
+      { title: 'Open Section 1', content: 'This is the content of section 1.' },
+      { title: 'Open Section 2', content: 'This is the content of section 2.' },
+      { title: 'Open Section 3', content: 'This is the content of section 3.' }
+    ];
+
+    // Initialize the collapsible list
+    createCollapsibleList(items);
+  </script>
+</body>
+</html>
