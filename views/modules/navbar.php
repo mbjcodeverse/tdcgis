@@ -31,7 +31,7 @@
               <!-- <h2 class="card-title my-3 my-md-0 ml-md-3 mr-md-auto" style="color:#f6fae8;font-size: 1.5em;">ROSELAWN MEMORIAL PARK GRAPHICAL INFORMATION SYSTEM</h2> -->
               <h2 class="card-title my-3 my-md-0 ml-md-3 mr-md-auto" style="font-size: 1.5em;text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.8);">
                 <span style="color:cornsilk;font-family: 'Arial', sans-serif;">ROSELAWN MEMORIAL PARK</span> 
-                <span style="color:aqua;">&nbsp;GEOGRAPHIC INFORMATION SYSTEM</span>
+                <span style="color:aqua;">&nbsp;GRAPHICAL INFORMATION SYSTEM</span>
               </h2> 
             </td>
 
