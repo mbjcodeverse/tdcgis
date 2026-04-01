@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+// $('#plotForm').show();
+
    const svgContainer = document.getElementById('map');
    const button = document.getElementById('btn-changecolor');
 
@@ -229,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
       memorial_overlay = mapGroundOverlay;
       
       // google.maps.event.addListener(memorial_overlay,'rightclick',getCoordinates);
+      google.maps.event.addListener(memorial_overlay,'rightclick',plotLotID);
       google.maps.event.addListener(memorial_overlay,'click',highlightGraveArea);
       
       // Wait for the overlay to be added to the map
@@ -304,7 +307,59 @@ document.addEventListener('DOMContentLoaded', function() {
       memorial_overlay.setMap(map);
    }
 
-   let id = 3890;  // Lot 50
+   function plotLotID(event){
+      $('#plotForm').show();
+      let latLng = event.latLng;
+      let latitude = latLng.lat();
+      let longitude = latLng.lng();
+      $("#sel-lotid").val("").trigger('change');
+      $("#lat_value").val(latitude);
+      $("#lng_value").val(longitude);
+   }
+
+   $("#saveLotID").click(function (e) {
+      let latitude = $("#lat_value").val();
+      let longitude = $("#lng_value").val();
+      let lotid = $("#sel-lotid").val();
+
+      // alert(latitude + '  ' + longitude + '  ' + lotid);
+
+      var save_lotid = new FormData();
+      save_lotid.append("lotid", lotid);
+      save_lotid.append("latitude", latitude);
+      save_lotid.append("longitude", longitude);
+
+      $.ajax({
+         url:"ajax/save_lotid.ajax.php",
+         method: "POST",
+         data: save_lotid,
+         cache: false,
+         contentType: false,
+         processData: false,
+         async: false,
+         dataType:"text",
+         success:function(answer){
+            swal.fire({
+               title: 'Location ' + lotid + ' successfully saved!',
+               type: 'success',
+               allowOutsideClick: false,
+               showConfirmButton: false,
+               timer: 1500
+            });
+            $("#sel-lotid").val("").trigger('change');
+            $("#lat_value").val("");
+            $("#lng_value").val("");
+            $('#plotForm').hide();
+         }
+      }) 
+   });
+
+   $("#closeForm").click(function (e) {
+      e.stopPropagation();
+      $("#plotForm").hide();
+   });
+
+   let id = 8095;  // L2-625J [ pp 324 ]
    function getCoordinates(event){
       id++;
       // // alert('Right-click count: ' + id);

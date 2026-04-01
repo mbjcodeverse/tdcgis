@@ -18,4 +18,10 @@ class ModelLot{
 		$stmt -> execute();
 		return $stmt -> fetchAll();	
 	}  	
+
+    static public function mdlLotList(){
+		$stmt = (new Connection)->connect()->prepare("SELECT * FROM lotinfo ORDER BY lotid");
+		$stmt -> execute();
+		return $stmt -> fetchAll();	
+	}	
 }

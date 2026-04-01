@@ -13,6 +13,30 @@ class ModelHome{
 		return $stmt -> fetchAll();
 	}
 
+	static public function mdlPostLotID($data){
+		$db = new Connection();
+		$pdo = $db->connect();
+        try{
+        	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo->beginTransaction();
+
+            // PO # not included
+			$stmt = $pdo->prepare("UPDATE lotinfo SET latitude = :latitude, longitude = :longitude WHERE lotid = :lotid");
+
+			$stmt->bindParam(":latitude", $data["latitude"], PDO::PARAM_STR);
+			$stmt->bindParam(":longitude", $data["longitude"], PDO::PARAM_STR);
+			$stmt->bindParam(":lotid", $data["lotid"], PDO::PARAM_STR);
+			
+			$stmt->execute();
+			$lotid = $data["lotid"];
+		    $pdo->commit();
+		    return $lotid;
+		}catch (Exception $e){
+			$pdo->rollBack();
+			return "error";
+		}	
+	}	
+
 	static public function mdlPostLotLocation($data){
 		$db = new Connection();
 		$pdo = $db->connect();

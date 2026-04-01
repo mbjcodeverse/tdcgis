@@ -1,5 +1,9 @@
 <?php $_SESSION["show_dashboard"] = true; ?>
-<div class="map-container" id="map" style="height:100%;"></div>
+
+
+<div class="map-container" id="map" style="height:100%;">
+  
+</div>
 <!-- <div id="overlay" style="position:absolute;top:0;bottom:0;left:0;right:0;background-color:white;z-index:-1;pointer-events: none;"></div> -->
       <ul class="navbar-nav" style="width:3rem;position:absolute;top: 58px;right:5px;left: inherit;">
         <button type="button" style="margin-bottom:3px;" class="btn bg-info btn-icon ml-2" id="btn-rotateleft"><i class="icon-rotate-ccw3"></i></button>
@@ -14,6 +18,29 @@
       <!-- <button id="btn-changecolor">Change Fill to Red</button> -->
 
 <!-- ============== Sales List ============ -->
+
+<div id="plotForm">
+  <span id="closeForm" class="close-btn">&times;</span>
+  <h3>Plot LOT ID</h3>
+  <label>Latitude:</label>
+  <input type="text" id="lat_value" />
+  <label>Longitude:</label>
+  <input type="text" id="lng_value" />
+  <label>Lot ID:</label>
+  <select class="form-control select-search" data-container-css-class="border-secondary" data-dropdown-css-class="border-secondary" id="sel-lotid" name="sel-lotid" required>
+    <option value="" selected hidden disabled>&lt;&nbsp;Select Lot&nbsp;&gt;</option>
+    <?php
+        $lotid = (new ControllerLot)->ctrLotList();
+        foreach ($lotid as $key => $value) {
+          echo '<option value="'.$value["lotid"].'">'.$value["lotid"].'</option>';
+        }
+      ?>
+  </select>
+  <div class="form-buttons">
+    <button id="saveLotID">Save</button>
+  </div>
+</div>
+
 <div id="modal-search-sales" class="modal" tabindex="-1" style="margin-left:1px;">
   <div class="modal-dialog modal-full modal-dialog-centered">
     <div class="modal-content" style="background-color: #343f53;">

@@ -16,6 +16,11 @@ class ControllerHome{
 		return $answer;
 	}
 
+	static public function ctrPostLotID($data){
+		$answer = (new ModelHome)->mdlPostLotID($data);
+		return $answer;
+	}	
+
 	static public function ctrGetNearestLot($data){
 		$answer = (new ModelHome)->mdlGetNearestLot($data);
 		return $answer;

@@ -14,4 +14,9 @@ class ControllerLot{
 		$answer = (new ModelLot)->mdlAvailableLotList();
 		return $answer;
 	} 	
+
+    static public function ctrLotList(){
+		$answer = (new ModelLot)->mdlLotList();
+		return $answer;
+	}	
 }
