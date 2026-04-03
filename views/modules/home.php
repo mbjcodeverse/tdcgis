@@ -19,9 +19,9 @@
 
 <!-- ============== Sales List ============ -->
 
-<div id="plotForm">
+<div id="plotForm" style="display: none;">
   <span id="closeForm" class="close-btn">&times;</span>
-  <h3>Plot LOT ID</h3>
+  <h3>Set LOT ID</h3>
   <label>Latitude:</label>
   <input type="text" id="lat_value" />
   <label>Longitude:</label>

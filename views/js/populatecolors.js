@@ -308,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
 
    function plotLotID(event){
+      alert("mom");
       $('#plotForm').show();
       let latLng = event.latLng;
       let latitude = latLng.lat();
