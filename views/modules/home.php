@@ -139,7 +139,7 @@
 <script src="views/js/sales.js"></script>      
 
 <!-- v=2.0 - is added if hosting website does not apply the javascript changes right away -->
-<script type="module" src="views/js/populatecolors.js?v=2.0"></script>
+<script type="module" src="views/js/populatecolors.js?v=3.0"></script>
 
 <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc6JpeMq16j7_-n9dgCTGWpd8Qh8waYvU&callback=initMap&libraries=drawing&v=weekly"
