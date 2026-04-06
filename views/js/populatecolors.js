@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  map.setZoom(20);
                  break;   
               default:
-                 window.location = 'populatecolors';
+                 window.location = 'home';
            }  
 
            map.setTilt(DEFAULT_TILT);

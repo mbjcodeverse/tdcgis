@@ -161,6 +161,7 @@
             $_GET["route"] == 'default' ||
             $_GET["route"] == 'lawnthree' ||
             $_GET["route"] == 'lawntwo' ||
+            $_GET["route"] == 'lawnone' ||
             $_GET["route"] == 'logout'){
            include "modules/".$_GET["route"].".php";
         }else{
