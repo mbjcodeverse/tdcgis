@@ -27,7 +27,8 @@
   <label>Longitude:</label>
   <input type="text" id="lng_value" />
   <label>Lot ID:</label>
-  <select class="form-control select-search" data-container-css-class="border-secondary" data-dropdown-css-class="border-secondary" id="sel-lotid" name="sel-lotid" required>
+  <input type="text" id="sel-lotid" />
+  <!-- <select class="form-control select-search" data-container-css-class="border-secondary" data-dropdown-css-class="border-secondary" id="sel-lotid" name="sel-lotid" required>
     <option value="" selected hidden disabled>&lt;&nbsp;Select Lot&nbsp;&gt;</option>
     <?php
         $lotid = (new ControllerLot)->ctrLotList();
@@ -35,7 +36,7 @@
           echo '<option value="'.$value["lotid"].'">'.$value["lotid"].'</option>';
         }
       ?>
-  </select>
+  </select> -->
   <div class="form-buttons">
     <button id="saveLotID">Save</button>
   </div>

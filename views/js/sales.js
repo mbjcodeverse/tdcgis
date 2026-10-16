@@ -83,28 +83,6 @@ $(function() {
     }
   });
 
-  // $('#lst_date_range').val('');
-
-  // Initialize the daterangepicker
-  // $('#lst_date_range').daterangepicker({
-  //   ranges: {
-  //     'Today'         : [moment(), moment()],
-  //     'Yesterday'     : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-  //     'Last 7 Days'   : [moment().subtract(6, 'days'), moment()],
-  //     'This Month'    : [moment().startOf('month'), moment().endOf('month')]
-  //   },
-  //   autoUpdateInput: false, // Prevent automatic input update
-  //   locale: {
-  //     cancelLabel: 'Clear'
-  //   }
-  // }, function(start, end, label) {
-  //   // When a date range is selected, update the input field manually
-  //   if (label === '') {
-  //     $('#lst_date_range').val(''); // Clear the input if blank is selected
-  //   } else {
-  //     $('#lst_date_range').val(start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY')); // Update with the selected range
-  //   }
-  // });
 
   $("#btn-addclient").click(function(){
       window.location = "clients";

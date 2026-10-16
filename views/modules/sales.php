@@ -209,17 +209,7 @@
             </tr>
           </thead>
           <tbody>
-          <?php
-            $clients = (new ControllerClients)->ctrShowEmployeesList();
-            foreach ($clients as $key => $value) {
-              echo '<tr idClient='.$value["id"].'>
-                      <td>'.$value["lname"].'</td>
-                      <td>'.$value["fname"].'</td>
-                      <td>'.$value["mi"].'</td>
-                      <td>'.$value["address"].'</td>
-                    </tr>';
-              }
-          ?>
+
           </tbody>
         </table>
       <!-- </div> -->
@@ -551,17 +541,7 @@
             </tr>
           </thead>
           <tbody>
-          <?php
-            $clients = (new ControllerClients)->ctrShowEmployeesList();
-            foreach ($clients as $key => $value) {
-              echo '<tr idClient='.$value["id"].'>
-                      <td>'.$value["lname"].'</td>
-                      <td>'.$value["fname"].'</td>
-                      <td>'.$value["mi"].'</td>
-                      <td>'.$value["address"].'</td>
-                    </tr>';
-              }
-          ?>
+
           </tbody>
         </table>
     </div>

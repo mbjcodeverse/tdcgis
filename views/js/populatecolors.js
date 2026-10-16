@@ -308,21 +308,30 @@ document.addEventListener('DOMContentLoaded', function() {
    }
 
    function plotLotID(event){
+      deleteMarkers();
       $('#plotForm').show();
       let latLng = event.latLng;
       let latitude = latLng.lat();
       let longitude = latLng.lng();
-      $("#sel-lotid").val("").trigger('change');
+      // $("#sel-lotid").val("").trigger('change');
+      $("#sel-lotid").val("");
       $("#lat_value").val(latitude);
       $("#lng_value").val(longitude);
+
+      setTimeout(function () {
+         $("#sel-lotid").focus();
+      }, 0);
    }
+
+   // Convert to Uppercase Input
+   $('#sel-lotid').on('input', function () {
+      $(this).val($(this).val().toUpperCase());
+   });
 
    $("#saveLotID").click(function (e) {
       let latitude = $("#lat_value").val();
       let longitude = $("#lng_value").val();
       let lotid = $("#sel-lotid").val();
-
-      // alert(latitude + '  ' + longitude + '  ' + lotid);
 
       var save_lotid = new FormData();
       save_lotid.append("lotid", lotid);
@@ -346,7 +355,8 @@ document.addEventListener('DOMContentLoaded', function() {
                showConfirmButton: false,
                timer: 1500
             });
-            $("#sel-lotid").val("").trigger('change');
+            // $("#sel-lotid").val("").trigger('change');
+            $("#sel-lotid").val("");
             $("#lat_value").val("");
             $("#lng_value").val("");
             $('#plotForm').hide();
