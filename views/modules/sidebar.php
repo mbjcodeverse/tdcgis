@@ -187,7 +187,7 @@
                     <a href="#" class="nav-link"><i class="icon-map5"></i> <span>Data Migration</span></a>
                       <ul class="nav nav-group-sub" data-submenu-title="Text editors">';
                           echo '
-                               <li class="nav-item"><a href="garden" class="nav-link">Garden</a></li>  
+                               <li class="nav-item"><a href="court" class="nav-link">Court</a></li>  
                           '; 
                         
                         //  echo '
