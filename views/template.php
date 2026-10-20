@@ -163,6 +163,7 @@
             $_GET["route"] == 'lawntwo' ||
             $_GET["route"] == 'lawnone' ||
             $_GET["route"] == 'garden' ||
+            $_GET["route"] == 'court' ||
             $_GET["route"] == 'logout'){
            include "modules/".$_GET["route"].".php";
         }else{
