@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
    const SOUTH_BOUND = 10.706009446450304;
    const EAST_BOUND = 122.97356933277679;
    const WEST_BOUND = 122.9671846920831;
-   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_map.svg";
-   // const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
+   // const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_map.svg";
+   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
    // const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg?v=1.0";
 
    async function initMap() {
