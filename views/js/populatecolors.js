@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
    const SOUTH_BOUND = 10.706009446450304;
    const EAST_BOUND = 122.97356933277679;
    const WEST_BOUND = 122.9671846920831;
-   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_plot.svg";
+   const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
    // const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg";
 
    async function initMap() {
@@ -788,7 +788,7 @@ document.addEventListener('DOMContentLoaded', function() {
    }
 
    function changeFillColor(newColor) {
-       const svgUrl = "views/global_assets/images/roselawnmap_edited_complete_plot.svg"; // Replace with your SVG file URL
+       const svgUrl = "views/global_assets/images/roselawnmap_edited_complete.svg"; // Replace with your SVG file URL
        fetch(svgUrl)
          .then(response => response.text())
          .then(svgText => {
