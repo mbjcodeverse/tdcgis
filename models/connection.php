@@ -2,7 +2,7 @@
 
 class Connection{
 	public function connect(){
-		//$link = new PDO("mysql:host=localhost;dbname=gis", "root", "");
+		// $link = new PDO("mysql:host=localhost;dbname=gis", "root", "");
 
 		$link = new PDO("mysql:host=localhost;dbname=u332488316_gis", "u332488316_gis", "MOJ@2024_onwards");
 
