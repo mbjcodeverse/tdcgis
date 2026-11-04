@@ -1,9 +1,33 @@
+if (!$.fn.DataTable.isDataTable('.clientsTable')) {
+    var stl = $('.clientsTable').DataTable({
+        deferRender: true,
+        processing: true,
+        autoWidth: true,
+        scrollY: 360,
+        pagelength: 25,
+        lengthMenu: [[25, 50], [25, 50]],
+        dom: '<"datatable-header"><"datatable-scroll"t><"datatable-footer"fp>',
+                language: {
+                    loadingRecords: 'Please wait - loading...',
+                    processing: '<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>',
+                    search: '<span>Filter:</span> _INPUT_',
+                    searchPlaceholder: 'Type to filter...',
+                    lengthMenu: '<span>Show:</span> _MENU_',
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+                }
+    });
+  }
+
 // Adjust column automatically when modal form is fired
 $('#modal-search-clients').on('shown.bs.modal', function () {
-   var tableclients = $('.clientsTable').DataTable();
-   tableclients.search('').draw();  // clear datatable filter textbox
-   tableclients.table().container().querySelector('.dataTables_filter input').focus(); // set focus
-   tableclients.columns.adjust();
+//    var tableclients = $('.clientsTable').DataTable();
+//    tableclients.search('').draw();  // clear datatable filter textbox
+//    tableclients.table().container().querySelector('.dataTables_filter input').focus(); // set focus
+//    tableclients.columns.adjust();
+
+   stl.search('').draw();  // clear datatable filter textbox
+   stl.table().container().querySelector('.dataTables_filter input').focus(); // set focus
+   stl.columns.adjust();
 });
     
 $(function() {

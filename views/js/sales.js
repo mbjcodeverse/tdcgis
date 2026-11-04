@@ -18,6 +18,26 @@ if (!$.fn.DataTable.isDataTable('.salesTransactionTable')) {
     });
   }
 
+if (!$.fn.DataTable.isDataTable('.clientsListTable')) {
+    var ct = $('.clientsListTable').DataTable({
+        deferRender: true,
+        processing: true,
+        autoWidth: true,
+        scrollY: 360,
+        pagelength: 25,
+        lengthMenu: [[25, 50], [25, 50]],
+        dom: '<"datatable-header"><"datatable-scroll"t><"datatable-footer"fp>',
+                language: {
+                    loadingRecords: 'Please wait - loading...',
+                    processing: '<i class="fa fa-spinner fa-spin fa-2x fa-fw"></i>',
+                    search: '<span>Filter:</span> _INPUT_',
+                    searchPlaceholder: 'Type to filter...',
+                    lengthMenu: '<span>Show:</span> _MENU_',
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+                }
+    });
+  }  
+
 if (!$.fn.DataTable.isDataTable('.salesHistoryTable')) {
     var shr = $('.salesHistoryTable').DataTable({
         deferRender: true,
@@ -60,8 +80,11 @@ if (!$.fn.DataTable.isDataTable('.availableLotTable')) {
   }  
 
 $('#modal-search-clients').on('shown.bs.modal', function () {
-   var tableclients = $('.clientsTable').DataTable();
-   tableclients.columns.adjust();
+  //  var tableclients = $('.clientsTable').DataTable();
+  //  tableclients.columns.adjust();
+   ct.search('').draw();  // clear datatable filter textbox
+   ct.table().container().querySelector('.dataTables_filter input').focus(); // set focus
+   ct.columns.adjust();
 });
 
 $('#modal-search-clients-transfer-resale').on('shown.bs.modal', function () {
@@ -226,7 +249,7 @@ $(function() {
     save_sale();
   });
 
-  $('.clientsTable tbody').on('dblclick', 'tr', function () {
+  $('.clientsListTable tbody').on('dblclick', 'tr', function () {
     var idClient = $(this).attr("idClient");
     var data = new FormData();
     data.append("idClient", idClient);
